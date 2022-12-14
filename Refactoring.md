@@ -9,3 +9,11 @@ You've been asked to refactor the function `deterministicPartitionKey` in [`dpk.
 You will be graded on the exhaustiveness and quality of your unit tests, the depth of your refactor, and the level of insight into your thought process provided by the written explanation.
 
 ## Your Explanation Here
+Tried to follow the SOLID principles, mainly the Single Responsibility Principle by just giving one task per auxiliary function. 
+It is assigning the default value for the candidate, then it validates the input and return as soon as it can, in order to avoid unnecessary validations.
+--- 
+### Auxiliary functions added:
+- validateTypeCandidate: Check if the type is string or parses it.
+- handleHash: Check the length of the data to be hashed. If the length is lower than the constant MAX_PARTITION_KEY_LENGTH it returns the same data.
+- createHash: It creates a crypto hash hex digested based in the algorithm and the data that is coming from the arguments.
+- deterministicPartitionKey: It is responsable for validate and use all the above mentioned functions in order to return the candidate properly.
